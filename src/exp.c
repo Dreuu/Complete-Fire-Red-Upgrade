@@ -245,6 +245,39 @@ void atk23_getexp(void)
 		#endif
 
 		calculatedExp = ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, divisor);
+
+		u32 level_cap = 14; //14
+		if (FlagGet(FLAG_BADGE01_GET))
+			level_cap = 21; //25
+		if (FlagGet(FLAG_BADGE02_GET))
+			level_cap = 24; //28
+		if (FlagGet(FLAG_BADGE03_GET))
+			level_cap = 29; //35
+		if (FlagGet(FLAG_BADGE04_GET))
+			level_cap = 43; //50
+		if (FlagGet(FLAG_BADGE05_GET))
+			level_cap = 43; //50
+		if (FlagGet(FLAG_BADGE06_GET))
+			level_cap = 47; //62
+		if (FlagGet(FLAG_BADGE07_GET))
+			level_cap = 50; //73
+		if (FlagGet(FLAG_BADGE08_GET))
+			level_cap = 63; //83
+		if (FlagGet(FLAG_SYS_GAME_CLEAR))
+			level_cap = 100;
+
+		if (pokeLevel == level_cap)
+			calculatedExp = udivsi(calculatedExp, 100);
+		if (pokeLevel > level_cap && calculatedExp > 1)
+			calculatedExp = 1;
+
+		//DELETE
+		if(FlagGet(FLAG_SYS_POKEDEX_GET)){
+			FlagSet(FLAG_SYS_DEXNAV);
+			FlagSet(FLAG_SYS_NATIONAL_DEX);
+		}
+		//DELETE END
+
 		goto SKIP_EXP_CALC; //Only here so the compiler stops giving potential unused label errors (because it can be depending on your configuration)
 
 	SKIP_EXP_CALC:

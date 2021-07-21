@@ -604,6 +604,11 @@
 ##Fix Slow Camera Update (OverworldBasic - see special_inserts.asm)
 08056578 00 B5 13 F0 95 FA 20 F0 FB FF B0 F7 EB FA 04 F0 13 FB 04 F0 4D FC 19 F0 9F FF 19 F0 13 FD A0 F0 0F F9 B0 F7 05 FB 00 BD
 
+##Extend Item Effect Table (Potion - Item 268)
+08126C76 FF
+0804152C FF
+08042508 FF
+
 #ifdef GEN4_PLUS_SELECTION_SCREEN
 0845A148 02 16 0B 07 08 0E 61 03
 #else
